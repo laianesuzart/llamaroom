@@ -101,15 +101,22 @@ const makeMaze = (array, styleClass, playerAvatar) => {
         for (let j = 0; j < array[i].length; j++) {
             let currentCell = array[i][j];
             let cell = document.createElement('div');
+            
             cell.classList.add('box');
     
             if (currentCell === 'W') {
                 cell.classList.add(styleClass);
             }
+
             if (currentCell === 'S') {
-                cell.classList.add('player');
+                cell.id = 'player';
                 cell.classList.add(playerAvatar);
             }
+
+            if (currentCell === 'F') {
+                cell.id = 'end';
+            }
+
             rowDiv.appendChild(cell);
         }
        gameDiv.appendChild(rowDiv);

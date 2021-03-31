@@ -110,18 +110,22 @@ section#game {
 
 .winterWall {
     background-color: #FFF;
+    box-shadow: 1px 1px rgb(213, 246, 248);
 }
 
 .springWall {
     background-color: #ee6f68;
+    box-shadow: 1px 1px pink;
 }
 
 .summerWall {
     background-color: dodgerblue;
+    box-shadow: 1px 1px skyblue;
 }
 
 .autumnWall {
     background-color: #551400;
+    box-shadow: 1px 1px orange;
 }
 
 .winterBg {
@@ -140,8 +144,7 @@ section#game {
     background-image: url(./assets/img/autumn.gif);
 }
 
-.player {
-    position: absolute;
+#player {
     background-size: contain;
     background-repeat: no-repeat;
 }
