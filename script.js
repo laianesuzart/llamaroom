@@ -16,6 +16,60 @@ const winterMap = [
     "WWWWWWWWWWWWWWWWWWWWW",
 ];
 
+const springMap = [
+    "WWWWWWWWWWWWWWWWWWWWW",
+    "W   W     W     W W F",
+    "W W W WWWWWWWWW W W W",
+    "W W W         W W   W",
+    "W WWWWWWW W WWW W W W",
+    "W         W     W W W",
+    "W WWW WWWWW WWWWW W W",
+    "W W   W   W W     W W",
+    "W WWWWW W W W WWW W W",
+    "W     W W W W W W WWW",
+    "WWWWW W W W W W W W W",
+    "W     W W W   W W W W",
+    "W WWWWWWW WWWWW W W W",
+    "S     WWW       W   W",
+    "WWWWWWWWWWWWWWWWWWWWW",
+];
+
+const summerMap = [
+    "WWWWWWWWWWWWWWWWWWWWW",
+    "S   W     W     W W W",
+    "W W W WWWWWWWWW W W W",
+    "W W W         W W   W",
+    "W WWWWWWW W WWW W W W",
+    "W         W     W W W",
+    "W WWW WWWWW WWWWW W W",
+    "W W   W   W W     W W",
+    "W WWWWW W W W WWW W W",
+    "W     W W W W W W WWW",
+    "WWWWW W W W W W W W W",
+    "W     W W W   W W W W",
+    "W WWWWWWW WWWWW W W W",
+    "W     WWW       W   F",
+    "WWWWWWWWWWWWWWWWWWWWW",
+];
+
+const autumnMap = [
+    "WWWWWWWWWWWWWWWWWWWWW",
+    "W   W     W     W W W",
+    "W W W WWW WWWWW W W W",
+    "W W W   W     W W   W",
+    "W WWWWWWW W WWW W W W",
+    "W         W     W W W",
+    "W WWW WWWWW WWWWW W W",
+    "W W   W   W W     W W",
+    "S WWWWW W W W WWW W F",
+    "W     W W W W W W WWW",
+    "WWWWW W W W W W W W W",
+    "W     W W W   W W W W",
+    "W WWWWWWW WWWWW W W W",
+    "W       W       W   W",
+    "WWWWWWWWWWWWWWWWWWWWW",
+];
+
 const whiteToon = document.getElementById('white');
 const blackToon = document.getElementById('black');
 const winterScene = document.getElementById('winter');
@@ -39,6 +93,7 @@ summerScene.disabled = true;
 autumnScene.disabled = true;
 
 const makeMaze = (array, styleClass) => {
+    gameDiv.textContent = '';
     for (let i = 0; i < array.length; i++) {
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('flex');
@@ -85,6 +140,7 @@ blackToon.addEventListener('click', () => {
 winterScene.addEventListener('click', () => {
     selectedScene = 'winterBg';
     wallColor = 'winterWall';
+
     makeMaze(winterMap, wallColor);
 
     gameSection.classList.add(selectedScene);
@@ -99,7 +155,8 @@ winterScene.addEventListener('click', () => {
 springScene.addEventListener('click', () => {
     selectedScene = 'springBg';
     wallColor = 'springWall';
-    // makeMaze(winterMap, wallColor);
+    
+    makeMaze(springMap, wallColor);
 
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
@@ -113,7 +170,8 @@ springScene.addEventListener('click', () => {
 summerScene.addEventListener('click', () => {
     selectedScene = 'summerBg';
     wallColor = 'summerWall';
-    // makeMaze(winterMap, wallColor);
+
+    makeMaze(summerMap, wallColor);
 
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
@@ -127,7 +185,7 @@ summerScene.addEventListener('click', () => {
 autumnScene.addEventListener('click', () => {
     selectedScene = 'autumnBg';
     wallColor = 'autumnWall';
-    // makeMaze(winterMap, wallColor);
+    makeMaze(autumnMap, wallColor);
 
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;

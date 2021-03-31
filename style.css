@@ -112,6 +112,18 @@ section#game {
     background-color: #FFF;
 }
 
+.springWall {
+    background-color: #ee6f68;
+}
+
+.summerWall {
+    background-color: dodgerblue;
+}
+
+.autumnWall {
+    background-color: #551400;
+}
+
 .winterBg {
     background-image: url(./assets/img/winter.gif);
 }
