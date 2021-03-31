@@ -92,7 +92,7 @@ springScene.disabled = true;
 summerScene.disabled = true;
 autumnScene.disabled = true;
 
-const makeMaze = (array, styleClass) => {
+const makeMaze = (array, styleClass, playerAvatar) => {
     gameDiv.textContent = '';
     for (let i = 0; i < array.length; i++) {
         let rowDiv = document.createElement('div');
@@ -105,6 +105,10 @@ const makeMaze = (array, styleClass) => {
     
             if (currentCell === 'W') {
                 cell.classList.add(styleClass);
+            }
+            if (currentCell === 'S') {
+                cell.classList.add('player');
+                cell.classList.add(playerAvatar);
             }
             rowDiv.appendChild(cell);
         }
@@ -141,7 +145,7 @@ winterScene.addEventListener('click', () => {
     selectedScene = 'winterBg';
     wallColor = 'winterWall';
 
-    makeMaze(winterMap, wallColor);
+    makeMaze(winterMap, wallColor, selectedToon);
 
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
@@ -156,7 +160,7 @@ springScene.addEventListener('click', () => {
     selectedScene = 'springBg';
     wallColor = 'springWall';
     
-    makeMaze(springMap, wallColor);
+    makeMaze(springMap, wallColor, selectedToon);
 
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
@@ -171,7 +175,7 @@ summerScene.addEventListener('click', () => {
     selectedScene = 'summerBg';
     wallColor = 'summerWall';
 
-    makeMaze(summerMap, wallColor);
+    makeMaze(summerMap, wallColor, selectedToon);
 
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
@@ -185,7 +189,8 @@ summerScene.addEventListener('click', () => {
 autumnScene.addEventListener('click', () => {
     selectedScene = 'autumnBg';
     wallColor = 'autumnWall';
-    makeMaze(autumnMap, wallColor);
+
+    makeMaze(autumnMap, wallColor, selectedToon);
 
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
