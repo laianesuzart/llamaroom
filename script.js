@@ -228,17 +228,25 @@ const desactiveBtn = () => {
     startBtn.disabled = true;
 }
 
-homeBtn.addEventListener('click', () => {
-    setTimeout(() => {
-        gameSection.classList.add('hidden');
-        homePage.classList.remove('hidden');
-        hoverHomeBtn.classList.add('hidden');
-    }, 500);
-
+const resetPage = () => {
     desactiveBtn();
     resetSceneBtnColor();
     whiteToon.classList.remove('pinkText');
     blackToon.classList.remove('pinkText');
     homeBtn.classList.add('hidden');
     hoverHomeBtn.classList.remove('hidden');
+}
+
+homeBtn.addEventListener('click', () => {
+    setTimeout(() => {
+        gameSection.classList.add('hidden');
+        hoverHomeBtn.classList.add('hidden');
+        homePage.classList.remove('homeTransition');
+        gameSection.classList.remove('pageTransition');
+    }, 1000);
+
+    gameSection.classList.add('pageTransition');
+    homePage.classList.add('homeTransition');
+    homePage.classList.remove('hidden');
+    resetPage();
 });

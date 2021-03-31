@@ -47,7 +47,6 @@ button {
     color: var(--stroke-color);
     outline: none;
     border: none;
-    border-radius: 5px;
     margin: 0 5px;
     background-color: transparent;
     transition: color 300ms ease-in-out;
@@ -173,4 +172,31 @@ section#game {
 
 .hidden {
     display: none;
+}
+
+.pageTransition {
+    animation: vanish 1s;
+}
+
+.homeTransition {
+    position: absolute;
+    animation: showUp 1s;
+}
+
+@keyframes vanish {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes showUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
