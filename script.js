@@ -70,6 +70,9 @@ const autumnMap = [
     "WWWWWWWWWWWWWWWWWWWWW",
 ];
 
+const homeBtn = document.getElementById('homeBtn');
+const hoverHomeBtn = document.getElementById('hoverHomeBtn');
+
 const whiteToon = document.getElementById('white');
 const blackToon = document.getElementById('black');
 const winterScene = document.getElementById('winter');
@@ -115,6 +118,7 @@ const makeMaze = (array, styleClass, playerAvatar) => {
 
             if (currentCell === 'F') {
                 cell.id = 'end';
+                cell.classList.add('door');
             }
 
             rowDiv.appendChild(cell);
@@ -124,16 +128,20 @@ const makeMaze = (array, styleClass, playerAvatar) => {
     gameSection.appendChild(gameDiv);
 }
 
+const activeSceneBtn = () => {
+    winterScene.disabled = false;
+    springScene.disabled = false;
+    summerScene.disabled = false;
+    autumnScene.disabled = false;
+}
+
 whiteToon.addEventListener('click', () => {
     selectedToon = 'white';
 
     blackToon.classList.remove('pinkText');
     whiteToon.classList.add('pinkText');
 
-    winterScene.disabled = false;
-    springScene.disabled = false;
-    summerScene.disabled = false;
-    autumnScene.disabled = false;
+    activeSceneBtn();
 });
 
 blackToon.addEventListener('click', () => {
@@ -142,11 +150,15 @@ blackToon.addEventListener('click', () => {
     whiteToon.classList.remove('pinkText');
     blackToon.classList.add('pinkText');
 
-    winterScene.disabled = false;
-    springScene.disabled = false;
-    summerScene.disabled = false;
-    autumnScene.disabled = false;
+    activeSceneBtn();
 });
+
+const resetSceneBtnColor = () => {
+    winterScene.classList.remove('pinkText');
+    springScene.classList.remove('pinkText');
+    summerScene.classList.remove('pinkText');
+    autumnScene.classList.remove('pinkText');
+}
 
 winterScene.addEventListener('click', () => {
     selectedScene = 'winterBg';
@@ -157,9 +169,7 @@ winterScene.addEventListener('click', () => {
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
 
-    springScene.classList.remove('pinkText');
-    summerScene.classList.remove('pinkText');
-    autumnScene.classList.remove('pinkText');
+    resetSceneBtnColor();
     winterScene.classList.add('pinkText');
 });
 
@@ -172,9 +182,7 @@ springScene.addEventListener('click', () => {
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
 
-    summerScene.classList.remove('pinkText');
-    autumnScene.classList.remove('pinkText');
-    winterScene.classList.remove('pinkText');
+    resetSceneBtnColor();
     springScene.classList.add('pinkText');
 });
 
@@ -187,9 +195,7 @@ summerScene.addEventListener('click', () => {
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
 
-    springScene.classList.remove('pinkText');
-    autumnScene.classList.remove('pinkText');
-    winterScene.classList.remove('pinkText');
+    resetSceneBtnColor();
     summerScene.classList.add('pinkText');
 });
 
@@ -202,13 +208,37 @@ autumnScene.addEventListener('click', () => {
     gameSection.classList.add(selectedScene);
     startBtn.disabled = false;
 
-    springScene.classList.remove('pinkText');
-    summerScene.classList.remove('pinkText');
-    winterScene.classList.remove('pinkText');
+    resetSceneBtnColor();
     autumnScene.classList.add('pinkText');
 });
 
 startBtn.addEventListener('click', () => {
     homePage.classList.add('hidden');
     gameSection.classList.remove('hidden');
+
+    homeBtn.classList.remove('hidden');
+});
+
+const desactiveBtn = () => {
+
+    winterScene.disabled = true;
+    springScene.disabled = true;
+    summerScene.disabled = true;
+    autumnScene.disabled = true;
+    startBtn.disabled = true;
+}
+
+homeBtn.addEventListener('click', () => {
+    setTimeout(() => {
+        gameSection.classList.add('hidden');
+        homePage.classList.remove('hidden');
+        hoverHomeBtn.classList.add('hidden');
+    }, 500);
+
+    desactiveBtn();
+    resetSceneBtnColor();
+    whiteToon.classList.remove('pinkText');
+    blackToon.classList.remove('pinkText');
+    homeBtn.classList.add('hidden');
+    hoverHomeBtn.classList.remove('hidden');
 });
