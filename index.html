@@ -5,11 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Llamaroom</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Patrick+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <section id="game"></section>
-    
+    <main>
+        <section id="home">
+            <h1>Llamaroom</h1>
+            <h2>Choose your llamatoon:</h2>
+            <img src="./assets/img/avatar.png" alt="" class="avatar">
+
+            <div class="selection">
+                <button id="white">Dalai Blanc</button>
+                <button id="black">Noir Rudolph</button>
+            </div>
+
+            <h2>Choose a season:</h2>
+
+            <div class="selection">
+                <button id="winter">Winter</button>
+                <button id="spring">Spring</button>
+                <button id="summer">Summer</button>
+                <button id="autumn">Autumn</button>
+            </div>
+
+            <button id="start">Scape the room!</button>
+        </section>
+
+        <section id="game" class="hidden"></section>
+    </main>
+
     <script src="./script.js"></script>
 </body>
 </html>

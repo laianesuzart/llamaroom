@@ -1,3 +1,73 @@
+html, body, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #16001E;
+    --text-color: #330036;
+    --stroke-color: #EAF2EF;
+    --highlight-color: #55868C;
+    --title-font: 'Luckiest Guy', cursive;
+    --text-font: 'Patrick Hand', cursive;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+main {
+    text-align: center;
+}
+
+h1, h2 {
+    font-family: var(--title-font);
+    color: var(--text-color);
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 5rem;
+    -webkit-text-stroke: 2px var(--stroke-color);
+}
+
+h2 {
+    font-size: 2rem;
+    -webkit-text-stroke: 1px var(--stroke-color);
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+    color: var(--stroke-color);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    background-color: transparent;
+    transition: color 300ms ease-in-out;
+}
+
+button#start {
+    border: 4px double var(--highlight-color);
+    padding: 10px;
+}
+
+button:hover {
+    color: var(--highlight-color);
+}
+
+.avatar {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.selection {
+    margin-bottom: 40px;
+}
+
 .flex {
     display: flex;
 }
@@ -9,4 +79,8 @@
 
 .wall {
     background-color: purple;
+}
+
+.hidden {
+    display: none;
 }
