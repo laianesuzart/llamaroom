@@ -232,6 +232,13 @@ const makePopUp = () => {
     innerPopUp.innerText = 'You escaped!\nCongrats :D\n'
     const homeBtnPopUp = document.createElement('button');
     const restartBtn = document.createElement('button');
+    const winner = document.createElement('div');
+
+    if (selectedToon === 'white') {
+        winner.classList.add('whiteWin');
+    } else {
+        winner.classList.add('blackWin');
+    }
 
     homeBtnPopUp.innerText = 'Home';
     restartBtn.innerText = 'Restart';
@@ -242,7 +249,10 @@ const makePopUp = () => {
 
     homeBtnPopUp.addEventListener('click', () => {
         goToHomePg();
-        main.removeChild(popUp);
+        popUp.classList.add('pageTransition');
+        setTimeout(() => {
+            main.removeChild(popUp);
+        }, 500);
     });
 
     restartBtn.addEventListener('click', () => {
@@ -259,6 +269,7 @@ const makePopUp = () => {
     });
 
     popUp.appendChild(innerPopUp);
+    popUp.appendChild(winner);
     popUp.classList.add('popUp');
 }
 
