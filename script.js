@@ -160,6 +160,13 @@ const resetSceneBtnColor = () => {
     autumnScene.classList.remove('pinkText');
 }
 
+const resetSceneBg = () => {
+    gameSection.classList.remove('winterBg');
+    gameSection.classList.remove('springBg');
+    gameSection.classList.remove('summerBg');
+    gameSection.classList.remove('autumnBg');
+}
+
 winterScene.addEventListener('click', () => {
     selectedScene = 'winterBg';
     wallColor = 'winterWall';
@@ -220,7 +227,6 @@ startBtn.addEventListener('click', () => {
 });
 
 const desactiveBtn = () => {
-
     winterScene.disabled = true;
     springScene.disabled = true;
     summerScene.disabled = true;
@@ -231,6 +237,7 @@ const desactiveBtn = () => {
 const resetPage = () => {
     desactiveBtn();
     resetSceneBtnColor();
+    resetSceneBg();
     whiteToon.classList.remove('pinkText');
     blackToon.classList.remove('pinkText');
     homeBtn.classList.add('hidden');
@@ -241,12 +248,12 @@ homeBtn.addEventListener('click', () => {
     setTimeout(() => {
         gameSection.classList.add('hidden');
         hoverHomeBtn.classList.add('hidden');
-        homePage.classList.remove('homeTransition');
         gameSection.classList.remove('pageTransition');
-    }, 1000);
+        homePage.classList.add('homeTransition');
+        homePage.classList.remove('hidden');
+    }, 800);
 
     gameSection.classList.add('pageTransition');
-    homePage.classList.add('homeTransition');
-    homePage.classList.remove('hidden');
+    
     resetPage();
 });

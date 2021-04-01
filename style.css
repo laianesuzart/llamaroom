@@ -175,12 +175,12 @@ section#game {
 }
 
 .pageTransition {
-    animation: vanish 1s;
+    animation: vanish 800ms;
 }
 
 .homeTransition {
     position: absolute;
-    animation: showUp 1s;
+    animation: showUp 600ms;
 }
 
 @keyframes vanish {
