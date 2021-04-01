@@ -100,20 +100,25 @@ const makeMaze = (array, styleClass, playerAvatar) => {
     for (let i = 0; i < array.length; i++) {
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('flex');
-    
+
         for (let j = 0; j < array[i].length; j++) {
             let currentCell = array[i][j];
             let cell = document.createElement('div');
             
             cell.classList.add('box');
+            cell.dataset.row = `${i+1}`;
+            cell.dataset.column = `${j+1}`;
     
             if (currentCell === 'W') {
                 cell.classList.add(styleClass);
             }
 
             if (currentCell === 'S') {
-                cell.id = 'player';
-                cell.classList.add(playerAvatar);
+                cell.id = 'start';
+                let player = document.createElement('div');
+                player.id = 'player';
+                player.classList.add(playerAvatar);
+                cell.appendChild(player);
             }
 
             if (currentCell === 'F') {
@@ -219,11 +224,35 @@ autumnScene.addEventListener('click', () => {
     autumnScene.classList.add('pinkText');
 });
 
+const moveToon = (e) => {
+    let keyName = e.key;
+    const player = document.getElementById('player');
+    let currentPosition = player.parentElement;
+
+    let toonPosition = {
+        ArrowUp: function() {
+
+        },
+        ArrowDown: function() {
+
+        },
+        ArrowLeft: function() {
+
+        },
+        ArrowRight: function() {
+
+        }
+    }
+
+    // toonPosition[keyName]();
+}
+
 startBtn.addEventListener('click', () => {
     homePage.classList.add('hidden');
     gameSection.classList.remove('hidden');
 
     homeBtn.classList.remove('hidden');
+    document.addEventListener('keydown', moveToon);
 });
 
 const desactiveBtn = () => {
@@ -242,6 +271,8 @@ const resetPage = () => {
     blackToon.classList.remove('pinkText');
     homeBtn.classList.add('hidden');
     hoverHomeBtn.classList.remove('hidden');
+
+    document.removeEventListener('keydown');
 }
 
 homeBtn.addEventListener('click', () => {
@@ -257,3 +288,6 @@ homeBtn.addEventListener('click', () => {
     
     resetPage();
 });
+
+
+

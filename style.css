@@ -155,8 +155,11 @@ section#game {
 }
 
 #player {
+    height: 25px;
+    width: 25px;
     background-size: contain;
     background-repeat: no-repeat;
+    background-position-x: center;
 }
 
 .whitePlayer {
