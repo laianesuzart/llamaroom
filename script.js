@@ -114,7 +114,7 @@ const makeMaze = (array, styleClass, playerAvatar) => {
             }
 
             if (currentCell === 'S') {
-                cell.id = 'start';
+                cell.id = 'startPos';
                 let player = document.createElement('div');
                 player.id = 'player';
                 player.classList.add(playerAvatar);
@@ -239,7 +239,6 @@ const moveToon = (e) => {
 
             if (!moveTo.classList.contains(wallColor))
                 moveTo.appendChild(player);
-            
         },
         ArrowDown: function() {
             let newRow = `[data-row="${currentRow+1}"]`;;
@@ -248,16 +247,14 @@ const moveToon = (e) => {
 
             if (!moveTo.classList.contains(wallColor))
                 moveTo.appendChild(player);
-            
         },
         ArrowLeft: function() {
             let newRow = `[data-row="${currentRow}"]`;;
             let newColumn = `[data-column="${currentColumn-1}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor))
+            if (!moveTo.classList.contains(wallColor) && moveTo.id !== 'startPos')
                 moveTo.appendChild(player);
-            
         },
         ArrowRight: function() {
             let newRow = `[data-row="${currentRow}"]`;;
@@ -266,11 +263,18 @@ const moveToon = (e) => {
 
             if (!moveTo.classList.contains(wallColor))
                 moveTo.appendChild(player);
-            
         }
     }
 
     toonPosition[keyName]();
+}
+
+const closeStart = () => {
+    const startPos = document.getElementById('startPos');
+ 
+    setTimeout(() => {
+        startPos.classList.add('closed');
+    }, 3000);
 }
 
 startBtn.addEventListener('click', () => {
@@ -279,6 +283,7 @@ startBtn.addEventListener('click', () => {
 
     homeBtn.classList.remove('hidden');
     document.addEventListener('keydown', moveToon);
+    closeStart();
 });
 
 const desactiveBtn = () => {
@@ -298,7 +303,7 @@ const resetPage = () => {
     homeBtn.classList.add('hidden');
     hoverHomeBtn.classList.remove('hidden');
 
-    document.removeEventListener('keydown');
+    document.removeEventListener('keydown', moveToon);
 }
 
 homeBtn.addEventListener('click', () => {

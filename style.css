@@ -154,6 +154,13 @@ section#game {
     background-image: url(./assets/img/autumn.gif);
 }
 
+.closed {
+    background-image: url(./assets/img/closedDoor.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: closingDoor 3s;
+}
+
 #player {
     height: 25px;
     width: 25px;
@@ -205,5 +212,15 @@ section#game {
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes closingDoor {
+    from {
+        transform: scale(0.3);
+        transform-origin: top;
+    }
+    to {
+        transform: scale(1);
     }
 }
