@@ -224,14 +224,56 @@ autumnScene.addEventListener('click', () => {
     autumnScene.classList.add('pinkText');
 });
 
+const main = document.getElementsByTagName('main')[0];
+const popUp = document.createElement('div');
+
+const makePopUp = () => {
+    const innerPopUp = document.createElement('div');
+    innerPopUp.innerText = 'You escaped!\nCongrats :D\n'
+    const homeBtnPopUp = document.createElement('button');
+    const restartBtn = document.createElement('button');
+
+    homeBtnPopUp.innerText = 'Home';
+    restartBtn.innerText = 'Restart';
+
+    innerPopUp.appendChild(homeBtnPopUp);
+    innerPopUp.appendChild(restartBtn);
+    innerPopUp.classList.add('innerPopUp');
+
+    homeBtnPopUp.addEventListener('click', () => {
+        resetPage();
+        main.removeChild(popUp);
+        homePage.classList.remove('hidden')
+    });
+
+    restartBtn.addEventListener('click', () => {
+        main.removeChild(popUp);
+        gameSection.classList.remove('pageTransition');
+        gameSection.classList.remove('hidden');
+        document.addEventListener('keydown', moveToon);
+
+        const startPos = document.getElementById('startPos');
+        const player = document.getElementById('player');
+        startPos.classList.remove('closed');
+        startPos.appendChild(player);
+        closeStart();
+    });
+
+    popUp.appendChild(innerPopUp);
+    popUp.classList.add('popUp');
+}
 const endGame = () => {
     const end = document.getElementById('end');
-    const popUp = document.createElement('div');
-    popUp.classList.add('popUp');
 
     if (end.childElementCount !== 0) {
-        gameSection.appendChild(popUp);
+        popUp.textContent = '';
+        makePopUp();
+        gameSection.classList.add('pageTransition');
         document.removeEventListener('keydown', moveToon);
+        setTimeout(() => {
+            gameSection.classList.add('hidden');
+            main.appendChild(popUp);
+        }, 800);
     }
 }
 

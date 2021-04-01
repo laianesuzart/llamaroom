@@ -208,6 +208,17 @@ section#game {
     bottom: 0;
     left: 0;
     right: 0;
+    animation: showUp 2s;
+}
+
+.innerPopUp {
+    color: var(--highlight-color);
+    font-family: var(--title-font);
+    font-size: 2rem;
+    position: relative;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
 }
 
 @keyframes vanish {
