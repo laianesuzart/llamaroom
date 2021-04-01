@@ -72,6 +72,7 @@ const autumnMap = [
 
 const homeBtn = document.getElementById('homeBtn');
 const hoverHomeBtn = document.getElementById('hoverHomeBtn');
+const soundBtn = document.getElementById('soundBtn');
 
 const whiteToon = document.getElementById('white');
 const blackToon = document.getElementById('black');
@@ -172,6 +173,8 @@ const resetSceneBg = () => {
     gameSection.classList.remove('autumnBg');
 }
 
+const audio = document.createElement('audio');
+
 winterScene.addEventListener('click', () => {
     selectedScene = 'winterBg';
     wallColor = 'winterWall';
@@ -183,6 +186,8 @@ winterScene.addEventListener('click', () => {
 
     resetSceneBtnColor();
     winterScene.classList.add('pinkText');
+
+    audio.src = './assets/music/winter-bgm.mp3';
 });
 
 springScene.addEventListener('click', () => {
@@ -196,6 +201,8 @@ springScene.addEventListener('click', () => {
 
     resetSceneBtnColor();
     springScene.classList.add('pinkText');
+
+    audio.src = './assets/music/spring-bgm.mp3';
 });
 
 summerScene.addEventListener('click', () => {
@@ -209,6 +216,8 @@ summerScene.addEventListener('click', () => {
 
     resetSceneBtnColor();
     summerScene.classList.add('pinkText');
+
+    audio.src = './assets/music/summer-bgm.mp3';
 });
 
 autumnScene.addEventListener('click', () => {
@@ -222,6 +231,8 @@ autumnScene.addEventListener('click', () => {
 
     resetSceneBtnColor();
     autumnScene.classList.add('pinkText');
+
+    audio.src = './assets/music/autumn-bgm.mp3';
 });
 
 const main = document.getElementsByTagName('main')[0];
@@ -381,8 +392,12 @@ startBtn.addEventListener('click', () => {
     gameSection.classList.remove('hidden');
 
     homeBtn.classList.remove('hidden');
+    soundBtn.classList.remove('hidden');
     document.addEventListener('keydown', moveToon);
     closeStart();
+
+    gameSection.appendChild(audio);
+    audio.play();
 });
 
 const desactiveBtn = () => {
@@ -401,7 +416,8 @@ const resetPage = () => {
     blackToon.classList.remove('pinkText');
     homeBtn.classList.add('hidden');
     hoverHomeBtn.classList.remove('hidden');
-
+    soundBtn.classList.add('hidden');
+    gameSection.removeChild(audio);
     document.removeEventListener('keydown', moveToon);
 }
 
