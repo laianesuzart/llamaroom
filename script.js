@@ -228,45 +228,45 @@ const moveToon = (e) => {
     let keyName = e.key;
     const player = document.getElementById('player');
     let currentPosition = player.parentElement;
-    let currentRow = currentPosition.dataset.row;
-    let currentColumn = currentPosition.dataset.column;
-
+    let currentRow = Number(currentPosition.dataset.row);
+    let currentColumn = Number(currentPosition.dataset.column);
+  
     let toonPosition = {
         ArrowUp: function() {
             let newRow = `[data-row="${currentRow-1}"]`;;
             let newColumn = `[data-column="${currentColumn}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor)){
+            if (!moveTo.classList.contains(wallColor))
                 moveTo.appendChild(player);
-            } 
+            
         },
         ArrowDown: function() {
             let newRow = `[data-row="${currentRow+1}"]`;;
             let newColumn = `[data-column="${currentColumn}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor)){
+            if (!moveTo.classList.contains(wallColor))
                 moveTo.appendChild(player);
-            } 
+            
         },
         ArrowLeft: function() {
             let newRow = `[data-row="${currentRow}"]`;;
             let newColumn = `[data-column="${currentColumn-1}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor)){
+            if (!moveTo.classList.contains(wallColor))
                 moveTo.appendChild(player);
-            } 
+            
         },
         ArrowRight: function() {
             let newRow = `[data-row="${currentRow}"]`;;
             let newColumn = `[data-column="${currentColumn+1}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor)){
+            if (!moveTo.classList.contains(wallColor))
                 moveTo.appendChild(player);
-            } 
+            
         }
     }
 
