@@ -236,6 +236,14 @@ section#game {
     animation: slideLeft 100ms;
 }
 
+.sizeDown {
+    animation: sizeDown 100ms;
+}
+
+.sizeUp {
+    animation: sizeUp 100ms;
+}
+
 @keyframes vanish {
     from {
         opacity: 1;
@@ -279,5 +287,23 @@ section#game {
     }
     to {
         transform: rotate(30deg);
+    }
+}
+
+@keyframes sizeDown {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.5);
+    }
+}
+
+@keyframes sizeUp {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
     }
 }

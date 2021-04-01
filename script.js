@@ -301,16 +301,35 @@ const moveToon = (e) => {
             let newColumn = `[data-column="${currentColumn}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor))
-                moveTo.appendChild(player);
+            if (!moveTo.classList.contains(wallColor)) {
+                player.classList.add('sizeDown');
+                setTimeout(() => {
+                    moveTo.appendChild(player);
+                    player.classList.remove('sizeDown');
+                    player.classList.add('sizeUp');
+                }, 100);
+                setTimeout(() => {
+                    player.classList.remove('sizeUp');
+                }, 200);
+            }
+                
         },
         ArrowDown: function() {
             let newRow = `[data-row="${currentRow+1}"]`;;
             let newColumn = `[data-column="${currentColumn}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor))
-                moveTo.appendChild(player);
+            if (!moveTo.classList.contains(wallColor)) {
+                player.classList.add('sizeDown');
+                setTimeout(() => {
+                    moveTo.appendChild(player);
+                    player.classList.remove('sizeDown');
+                    player.classList.add('sizeUp');
+                }, 100);
+                setTimeout(() => {
+                    player.classList.remove('sizeUp');
+                }, 200);
+            }
         },
         ArrowLeft: function() {
             let newRow = `[data-row="${currentRow}"]`;;
