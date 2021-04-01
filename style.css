@@ -197,6 +197,19 @@ section#game {
     animation: showUp 600ms;
 }
 
+.popUp {
+    background-image: url(./assets/img/openedDoor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-color: var(--bg-color);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 @keyframes vanish {
     from {
         opacity: 1;

@@ -224,6 +224,17 @@ autumnScene.addEventListener('click', () => {
     autumnScene.classList.add('pinkText');
 });
 
+const endGame = () => {
+    const end = document.getElementById('end');
+    const popUp = document.createElement('div');
+    popUp.classList.add('popUp');
+
+    if (end.childElementCount !== 0) {
+        gameSection.appendChild(popUp);
+        document.removeEventListener('keydown', moveToon);
+    }
+}
+
 const moveToon = (e) => {
     let keyName = e.key;
     const player = document.getElementById('player');
@@ -253,8 +264,10 @@ const moveToon = (e) => {
             let newColumn = `[data-column="${currentColumn-1}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor) && moveTo.id !== 'startPos')
+            if (currentColumn > 1) {
+                if (!moveTo.classList.contains(wallColor) && moveTo.id !== 'startPos')
                 moveTo.appendChild(player);
+            }
         },
         ArrowRight: function() {
             let newRow = `[data-row="${currentRow}"]`;;
@@ -267,6 +280,7 @@ const moveToon = (e) => {
     }
 
     toonPosition[keyName]();
+    endGame();
 }
 
 const closeStart = () => {
@@ -274,7 +288,7 @@ const closeStart = () => {
  
     setTimeout(() => {
         startPos.classList.add('closed');
-    }, 3000);
+    }, 2500);
 }
 
 startBtn.addEventListener('click', () => {
