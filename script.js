@@ -241,9 +241,8 @@ const makePopUp = () => {
     innerPopUp.classList.add('innerPopUp');
 
     homeBtnPopUp.addEventListener('click', () => {
-        resetPage();
+        goToHomePg();
         main.removeChild(popUp);
-        homePage.classList.remove('hidden')
     });
 
     restartBtn.addEventListener('click', () => {
@@ -262,6 +261,7 @@ const makePopUp = () => {
     popUp.appendChild(innerPopUp);
     popUp.classList.add('popUp');
 }
+
 const endGame = () => {
     const end = document.getElementById('end');
 
@@ -362,7 +362,7 @@ const resetPage = () => {
     document.removeEventListener('keydown', moveToon);
 }
 
-homeBtn.addEventListener('click', () => {
+const goToHomePg = () => {
     setTimeout(() => {
         gameSection.classList.add('hidden');
         hoverHomeBtn.classList.add('hidden');
@@ -374,7 +374,9 @@ homeBtn.addEventListener('click', () => {
     gameSection.classList.add('pageTransition');
     
     resetPage();
-});
+}
+
+homeBtn.addEventListener('click', goToHomePg);
 
 
 
