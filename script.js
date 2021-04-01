@@ -436,3 +436,16 @@ const goToHomePg = () => {
 }
 
 homeBtn.addEventListener('click', goToHomePg);
+
+let clickCount = 'pause';
+
+soundBtn.addEventListener('click', () => {
+ 
+    if (clickCount === 'pause') {
+        audio.pause();
+        clickCount = 'play';
+    } else if (clickCount === 'play') {
+        audio.play();
+        clickCount = 'pause';
+    }
+});
