@@ -318,8 +318,13 @@ const moveToon = (e) => {
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
             if (currentColumn > 1) {
-                if (!moveTo.classList.contains(wallColor) && moveTo.id !== 'startPos')
-                moveTo.appendChild(player);
+                if (!moveTo.classList.contains(wallColor) && moveTo.id !== 'startPos') {
+                    player.classList.add('slideLeft');
+                    setTimeout(() => {
+                        moveTo.appendChild(player);
+                        player.classList.remove('slideLeft');
+                    }, 100);
+                }
             }
         },
         ArrowRight: function() {
@@ -327,8 +332,13 @@ const moveToon = (e) => {
             let newColumn = `[data-column="${currentColumn+1}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
-            if (!moveTo.classList.contains(wallColor))
-                moveTo.appendChild(player);
+            if (!moveTo.classList.contains(wallColor)) {
+                player.classList.add('slideRight');
+                setTimeout(() => {
+                    moveTo.appendChild(player);
+                    player.classList.remove('slideRight');
+                }, 100);
+            } 
         }
     }
 
@@ -388,6 +398,3 @@ const goToHomePg = () => {
 }
 
 homeBtn.addEventListener('click', goToHomePg);
-
-
-

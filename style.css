@@ -13,11 +13,8 @@ html, body, div {
     --text-font: 'Patrick Hand', cursive;
 }
 
-body {
-    background-color: var(--bg-color);
-}
-
 main {
+    background-color: var(--bg-color);
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -102,18 +99,6 @@ section#game {
     color: deeppink;
 }
 
-.white {
-    background-image: url(./assets/img/white-llama.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.black {
-    background-image: url(./assets/img/black-llama.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
 .winterWall {
     background-color: #FFF;
     box-shadow: 1px 1px rgb(213, 246, 248);
@@ -169,11 +154,11 @@ section#game {
     background-position-x: center;
 }
 
-.whitePlayer {
+.white {
     background-image: url(./assets/img/white-llama.png);
 }
 
-.blackPlayer {
+.black {
     background-image: url(./assets/img/black-llama.png);
 }
 
@@ -243,6 +228,14 @@ section#game {
     height: 400px;
 }
 
+.slideRight {
+    animation: slideRight 100ms;
+}
+
+.slideLeft {
+    animation: slideLeft 100ms;
+}
+
 @keyframes vanish {
     from {
         opacity: 1;
@@ -268,5 +261,23 @@ section#game {
     }
     to {
         transform: scale(1);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(-30deg);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(30deg);
     }
 }
