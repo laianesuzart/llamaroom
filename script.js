@@ -407,8 +407,10 @@ const moveToon = (e) => {
         }
     }
     endGame();
-    toonPosition[keyName]();
-    
+
+    if (toonPosition[keyName] !== undefined) {
+        toonPosition[keyName]();
+    }
 }
 
 const closeStart = () => {
