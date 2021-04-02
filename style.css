@@ -251,6 +251,26 @@ section#game {
     animation: sizeUp 100ms;
 }
 
+.warning {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    font-family: var(--text-font);
+    font-size: 2rem;
+}
+
+.warningText {
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    position: relative;
+    text-align: center;
+}
+
 @keyframes vanish {
     from {
         opacity: 1;

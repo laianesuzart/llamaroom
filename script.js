@@ -1,3 +1,20 @@
+const getDeviceType = () => {    // thx to Abdessalam Benharira
+    const ua = navigator.userAgent;
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+      return "tablet";
+    }
+    if (
+      /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+        ua
+      )
+    ) {
+      return "mobile";
+    }
+    return "desktop";
+  };
+
+const deviceType = getDeviceType();
+
 const winterMap = [
     "WWWWWWWWWWWWWWWWWWWWW",
     "W   W     W     W W W",
@@ -74,6 +91,8 @@ const homeBtn = document.getElementById('homeBtn');
 const hoverHomeBtn = document.getElementById('hoverHomeBtn');
 const soundBtn = document.getElementById('soundBtn');
 
+const body = document.getElementsByTagName('body')[0];
+
 const whiteToon = document.getElementById('white');
 const blackToon = document.getElementById('black');
 const winterScene = document.getElementById('winter');
@@ -85,6 +104,18 @@ const startBtn = document.getElementById('start');
 const homePage = document.getElementById('home');
 const gameSection = document.getElementById('game');
 const gameDiv = document.createElement('div');
+
+if (deviceType !== 'desktop') {
+    homePage.classList.add('hidden');
+    const warningPage = document.createElement('div');
+    const warningText = document.createElement('p');
+    warningText.innerText = 'Oh no! You can only play Llamaroom on desktop :c';
+    warningText.classList.add('warningText');
+
+    warningPage.appendChild(warningText);
+    warningPage.classList.add('warning');
+    body.appendChild(warningPage);
+}
 
 let selectedToon = '';
 let selectedScene = ''; 
