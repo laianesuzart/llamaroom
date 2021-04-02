@@ -205,6 +205,7 @@ const resetSceneBg = () => {
 }
 
 const audio = document.createElement('audio');
+audio.loop = true;
 
 winterScene.addEventListener('click', () => {
     selectedScene = 'winterBg';
