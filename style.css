@@ -217,22 +217,22 @@ section#game {
     background-image: url(./assets/img/whiteWin.png);
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 40px;
     background-repeat: no-repeat;
     background-position-x: left;
-    width: 400px;
-    height: 400px;
+    width: 330px;
+    height: 220px;
 }
 
 .blackWin {
     background-image: url(./assets/img/blackWin.png);
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 40px;
     background-repeat: no-repeat;
     background-position-x: left;
-    width: 400px;
-    height: 400px;
+    width: 330px;
+    height: 220px;
 }
 
 .slideRight {
