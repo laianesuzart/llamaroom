@@ -14,6 +14,7 @@ const startBtn = document.getElementById('start');
 
 const homePage = document.getElementById('home');
 const gameSection = document.getElementById('game');
+const controlsDiv = document.getElementById('controls');
 const gameDiv = document.createElement('div');
 
 let selectedToon = '';
@@ -201,6 +202,7 @@ const makePopUp = () => {
     restartBtn.addEventListener('click', () => {
         main.removeChild(popUp);
         gameSection.classList.remove('pageTransition', 'hidden');
+        controlsDiv.classList.remove('pageTransition', 'hidden');
         gameDiv.classList.remove('pageTransition');
         document.addEventListener('keydown', moveToon);
 
@@ -224,9 +226,11 @@ const endGame = () => {
         makePopUp();
         gameDiv.classList.add('pageTransition');
         gameSection.classList.add('pageTransition');
+        controlsDiv.classList.add('pageTransition');
         document.removeEventListener('keydown', moveToon);
         setTimeout(() => {
             gameSection.classList.add('hidden');
+            controlsDiv.classList.add('hidden');
             main.appendChild(popUp);
         }, 800);
     }
@@ -328,7 +332,9 @@ startBtn.addEventListener('click', () => {
     homePage.classList.add('hidden');
     gameSection.classList.add('gameTransition');
     gameDiv.classList.add('gameTransition');
+    controlsDiv.classList.add('gameTransition');
     gameSection.classList.remove('hidden');
+    controlsDiv.classList.remove('hidden');
 
     homeBtn.classList.remove('hidden');
     soundBtn.classList.remove('hidden');
@@ -342,6 +348,7 @@ startBtn.addEventListener('click', () => {
     setTimeout(() => {
         gameSection.classList.remove('gameTransition');
         gameDiv.classList.remove('gameTransition');
+        controlsDiv.classList.remove('gameTransition');
     }, 1000)
 });
 
@@ -369,8 +376,10 @@ const resetPage = () => {
 const goToHomePg = () => {
     setTimeout(() => {
         gameSection.classList.add('hidden');
+        controlsDiv.classList.add('hidden');
         gameSection.classList.remove('pageTransition');
         gameDiv.classList.remove('pageTransition');
+        controlsDiv.classList.remove('pageTransition');
         homePage.classList.add('homeTransition');
         homePage.classList.remove('hidden');
         homeBtn.classList.add('hidden');
@@ -381,6 +390,7 @@ const goToHomePg = () => {
     homeBtn.children[0].classList.replace('fa-door-closed', 'fa-door-open');
     gameDiv.classList.add('pageTransition');
     gameSection.classList.add('pageTransition');
+    controlsDiv.classList.add('pageTransition');
     resetPage();
 }
 

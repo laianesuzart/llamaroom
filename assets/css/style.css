@@ -16,6 +16,7 @@ html, body, div {
 main {
     background-color: var(--bg-color);
     text-align: center;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -172,6 +173,41 @@ section#game {
 .door {
     background: url(../img/door.png) no-repeat right;
     background-size: contain;
+}
+
+.controls {
+    position: relative;
+    height: 80px;
+    width: 80px;
+}
+
+.control {
+    position: absolute;
+    font-size: 3rem;
+    padding: 0;
+    margin: 0;
+}
+
+.up {
+    top: 0;
+    transform: translate(-50%, -20%);
+}
+
+.down {
+    bottom: 0;
+    transform: translate(-50%, 35%);
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.left, .right {
+    transform: translateY(25%);
 }
 
 .hidden {
