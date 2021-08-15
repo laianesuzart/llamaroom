@@ -105,6 +105,7 @@ const resetSceneBg = () => {
 
 const audio = document.createElement('audio');
 audio.loop = true;
+audio.volume = 0.6;
 
 winterScene.addEventListener('click', () => {
     selectedScene = 'winterBg';
@@ -199,8 +200,8 @@ const makePopUp = () => {
 
     restartBtn.addEventListener('click', () => {
         main.removeChild(popUp);
-        gameSection.classList.remove('pageTransition');
-        gameSection.classList.remove('hidden');
+        gameSection.classList.remove('pageTransition', 'hidden');
+        gameDiv.classList.remove('pageTransition');
         document.addEventListener('keydown', moveToon);
 
         const startPos = document.getElementById('startPos');
@@ -221,6 +222,7 @@ const endGame = () => {
     if (end.childElementCount !== 0) {
         popUp.textContent = '';
         makePopUp();
+        gameDiv.classList.add('pageTransition');
         gameSection.classList.add('pageTransition');
         document.removeEventListener('keydown', moveToon);
         setTimeout(() => {
@@ -239,7 +241,7 @@ const moveToon = (e) => {
   
     let toonPosition = {
         ArrowUp: function() {
-            let newRow = `[data-row="${currentRow-1}"]`;;
+            let newRow = `[data-row="${currentRow-1}"]`;
             let newColumn = `[data-column="${currentColumn}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
@@ -257,7 +259,7 @@ const moveToon = (e) => {
                 
         },
         ArrowDown: function() {
-            let newRow = `[data-row="${currentRow+1}"]`;;
+            let newRow = `[data-row="${currentRow+1}"]`;
             let newColumn = `[data-column="${currentColumn}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
@@ -274,7 +276,7 @@ const moveToon = (e) => {
             }
         },
         ArrowLeft: function() {
-            let newRow = `[data-row="${currentRow}"]`;;
+            let newRow = `[data-row="${currentRow}"]`;
             let newColumn = `[data-column="${currentColumn-1}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
@@ -289,7 +291,7 @@ const moveToon = (e) => {
             }
         },
         ArrowRight: function() {
-            let newRow = `[data-row="${currentRow}"]`;;
+            let newRow = `[data-row="${currentRow}"]`;
             let newColumn = `[data-column="${currentColumn+1}"]`;
             let moveTo = gameDiv.querySelector(`${newRow}${newColumn}`);
 
@@ -352,7 +354,7 @@ const resetPage = () => {
     blackToon.classList.remove('pinkText');
     soundBtn.classList.add('hidden');
     clickCount = 'pause';
-    soundBtn.children[0].classList.replace('fa-play-circle', 'fa-pause-circle')
+    soundBtn.children[0].classList.replace('fa-play-circle', 'fa-pause-circle');
     gameSection.removeChild(audio);
     document.removeEventListener('keydown', moveToon);
 }
@@ -361,14 +363,15 @@ const goToHomePg = () => {
     setTimeout(() => {
         gameSection.classList.add('hidden');
         gameSection.classList.remove('pageTransition');
+        gameDiv.classList.remove('pageTransition');
         homePage.classList.add('homeTransition');
         homePage.classList.remove('hidden');
         homeBtn.classList.add('hidden');
-        homeBtn.classList.remove('pageTransition')
-        homeBtn.children[0].classList.replace('fa-door-open', 'fa-door-closed')
+        homeBtn.classList.remove('pageTransition');
+        homeBtn.children[0].classList.replace('fa-door-open', 'fa-door-closed');
     }, 800);
-    homeBtn.classList.add('pageTransition')
-    homeBtn.children[0].classList.replace('fa-door-closed', 'fa-door-open')
+    homeBtn.classList.add('pageTransition');
+    homeBtn.children[0].classList.replace('fa-door-closed', 'fa-door-open');
     gameSection.classList.add('pageTransition');
     
     resetPage();
@@ -380,11 +383,11 @@ soundBtn.addEventListener('click', () => {
  
     if (clickCount === 'pause') {
         audio.pause();
-        soundBtn.children[0].classList.replace('fa-pause-circle', 'fa-play-circle')
+        soundBtn.children[0].classList.replace('fa-pause-circle', 'fa-play-circle');
         clickCount = 'play';
     } else {
         audio.play();
-        soundBtn.children[0].classList.replace('fa-play-circle', 'fa-pause-circle')
+        soundBtn.children[0].classList.replace('fa-play-circle', 'fa-pause-circle');
         clickCount = 'pause';
     }
 });
