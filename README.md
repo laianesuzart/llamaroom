@@ -6,7 +6,7 @@
 [Sobre](#sobre) • [Tecnologias](#tecnologias) • [Layout](#layout) • [Autora](#autora) • [Licença](#licença)
 
 ## Sobre
-Llamaroom é um jogo de labirinto em que o objetivo do jogador é ajudar a lhama a encontrar a porta de saída do quarto (room em inglês), daí surgiu o nome do jogo. É possível escolher entre dois personagens e quatro mapas - cada mapa representa uma estação do ano e possui cenário e música que remetem à respectiva estação.\
+Llamaroom é um jogo de labirinto em que o objetivo do jogador é ajudar a lhama a encontrar a porta de saída do quarto (room em inglês), daí surgiu o nome do jogo. É possível escolher entre dois personagens e quatro mapas - cada mapa representa uma estação do ano e possui cenário e música que remetem à respectiva estação. Mova a lhama com as setas do teclado ou clicando nas setas na tela do jogo.\
 \
 Não possuo os direitos sob nenhuma das imagens nem das músicas. Abaixo estão os links para as músicas de background de cada estação:\
 [Inverno](https://www.youtube.com/watch?v=rsr1YFvtqEE&ab_channel=Fantasy%26WorldMusicbytheFiechters)\
