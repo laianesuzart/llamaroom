@@ -326,6 +326,8 @@ let clickCount = 'pause';
 
 startBtn.addEventListener('click', () => {
     homePage.classList.add('hidden');
+    gameSection.classList.add('gameTransition');
+    gameDiv.classList.add('gameTransition');
     gameSection.classList.remove('hidden');
 
     homeBtn.classList.remove('hidden');
@@ -336,6 +338,11 @@ startBtn.addEventListener('click', () => {
     clickCount = 'pause';
     gameSection.appendChild(audio);
     audio.play();
+
+    setTimeout(() => {
+        gameSection.classList.remove('gameTransition');
+        gameDiv.classList.remove('gameTransition');
+    }, 1000)
 });
 
 const desactiveBtn = () => {
@@ -372,8 +379,8 @@ const goToHomePg = () => {
     }, 800);
     homeBtn.classList.add('pageTransition');
     homeBtn.children[0].classList.replace('fa-door-closed', 'fa-door-open');
+    gameDiv.classList.add('pageTransition');
     gameSection.classList.add('pageTransition');
-    
     resetPage();
 }
 

@@ -170,10 +170,8 @@ section#game {
 }
 
 .door {
-    background-image: url(../img/door.png);
-    background-repeat: no-repeat;
+    background: url(../img/door.png) no-repeat right;
     background-size: contain;
-    background-position: right;
 }
 
 .hidden {
@@ -189,12 +187,15 @@ section#game {
     animation: showUp 600ms;
 }
 
+.gameTransition {
+    animation: showUp 1s;
+}
+
 .popUp {
-    background-image: url(../img/openedDoor.png);
-    background-repeat: no-repeat;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: var(--bg-color) url(../img/openedDoor.png) no-repeat center;
     background-size: contain;
-    background-position-x: center;
-    background-color: var(--bg-color);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -206,33 +207,29 @@ section#game {
 .innerPopUp {
     color: var(--highlight-color);
     font-family: var(--title-font);
-    font-size: 2rem;
+    font-size: 1.5rem;
     position: relative;
     top: 50%;
-    left: 45%;
+    left: 40%;
     transform: translate(-50%, -50%);
+}
+
+.whiteWin, .blackWin {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 300px;
+    height: 220px;
 }
 
 .whiteWin {
     background-image: url(../img/whiteWin.png);
-    position: absolute;
-    bottom: 0;
-    left: 40px;
-    background-repeat: no-repeat;
-    background-position-x: left;
-    width: 330px;
-    height: 220px;
 }
 
 .blackWin {
     background-image: url(../img/blackWin.png);
-    position: absolute;
-    bottom: 0;
-    left: 40px;
-    background-repeat: no-repeat;
-    background-position-x: left;
-    width: 330px;
-    height: 220px;
 }
 
 .slideRight {
@@ -342,5 +339,21 @@ section#game {
     .box, #player {
         width: 25px;
         height: 25px;
+    }
+
+    .innerPopUp {
+        font-size: 2rem;
+    }
+
+    .whiteWin, .blackWin {
+        width: 330px;
+        height: 220px;
+        left: 40px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .innerPopUp {
+        left: 45%;
     }
 }
