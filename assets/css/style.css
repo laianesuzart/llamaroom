@@ -28,12 +28,12 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     -webkit-text-stroke: 2px var(--stroke-color);
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     -webkit-text-stroke: 1px var(--stroke-color);
 }
 
@@ -61,20 +61,20 @@ button:hover {
 .homeBtn {
     position: absolute;
     top: 15px;
-    left: 20px;
+    left: 0;
     font-size: 1.8rem;
 }
 
 .soundBtn {
     position: absolute;
     top: 15px;
-    right: 20px;
+    right: 0;
     font-size: 1.8rem;
 }
 
 section#game {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 60%;
     max-width: 1280px;
     max-height: 720px;
     justify-content: center;
@@ -98,8 +98,8 @@ section#game {
 }
 
 .box {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
 }
 
 .pinkText {
@@ -131,46 +131,46 @@ section#game {
 }
 
 .winterBg {
-    background-image: url(./assets/img/winter.gif);
+    background-image: url(../img/winter.gif);
 }
 
 .springBg {
-    background-image: url(./assets/img/spring.gif);
+    background-image: url(../img/spring.gif);
 }
 
 .summerBg {
-    background-image: url(./assets/img/summer.gif);
+    background-image: url(../img/summer.gif);
 }
 
 .autumnBg {
-    background-image: url(./assets/img/autumn.gif);
+    background-image: url(../img/autumn.gif);
 }
 
 .closed {
-    background-image: url(./assets/img/closedDoor.png);
+    background-image: url(../img/closedDoor.png);
     background-size: contain;
     background-repeat: no-repeat;
     animation: closingDoor 3s;
 }
 
 #player {
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
 }
 
 .white {
-    background-image: url(./assets/img/white-llama.png);
+    background-image: url(../img/white-llama.png);
 }
 
 .black {
-    background-image: url(./assets/img/black-llama.png);
+    background-image: url(../img/black-llama.png);
 }
 
 .door {
-    background-image: url(./assets/img/door.png);
+    background-image: url(../img/door.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
@@ -190,7 +190,7 @@ section#game {
 }
 
 .popUp {
-    background-image: url(./assets/img/openedDoor.png);
+    background-image: url(../img/openedDoor.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: center;
@@ -214,7 +214,7 @@ section#game {
 }
 
 .whiteWin {
-    background-image: url(./assets/img/whiteWin.png);
+    background-image: url(../img/whiteWin.png);
     position: absolute;
     bottom: 0;
     left: 40px;
@@ -225,7 +225,7 @@ section#game {
 }
 
 .blackWin {
-    background-image: url(./assets/img/blackWin.png);
+    background-image: url(../img/blackWin.png);
     position: absolute;
     bottom: 0;
     left: 40px;
@@ -249,26 +249,6 @@ section#game {
 
 .sizeUp {
     animation: sizeUp 100ms;
-}
-
-.warning {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--highlight-color);
-    color: var(--text-color);
-    font-family: var(--text-font);
-    font-size: 2rem;
-}
-
-.warningText {
-    transform: translate(-50%, -50%);
-    top: 40%;
-    left: 50%;
-    position: relative;
-    text-align: center;
 }
 
 @keyframes vanish {
@@ -332,5 +312,35 @@ section#game {
     }
     to {
         transform: scale(1);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 5rem;
+        -webkit-text-stroke: 2px var(--stroke-color);
+    }
+    
+    h2 {
+        font-size: 2rem;
+        -webkit-text-stroke: 1px var(--stroke-color);
+    }
+
+    .homeBtn {
+        left: 20px;
+    }
+    
+    .soundBtn {
+        right: 20px;
+    }
+    
+    section#game {
+        width: 80%;
+        height: 80%;
+    }
+
+    .box, #player {
+        width: 25px;
+        height: 25px;
     }
 }

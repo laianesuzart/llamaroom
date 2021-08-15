@@ -1,92 +1,3 @@
-const getDeviceType = () => {    // thx to Abdessalam Benharira
-    const ua = navigator.userAgent;
-    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-      return "tablet";
-    }
-    if (
-      /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-        ua
-      )
-    ) {
-      return "mobile";
-    }
-    return "desktop";
-  };
-
-const deviceType = getDeviceType();
-
-const winterMap = [
-    "WWWWWWWWWWWWWWWWWWWWW",
-    "W   W     W     W W W",
-    "W W W WWW WWWWW W W W",
-    "W W W   W     W W   W",
-    "W WWWWWWW W WWW W W W",
-    "W         W     W W W",
-    "W WWW WWWWW WWWWW W W",
-    "W W   W   W W     W W",
-    "W WWWWW W W W WWW W F",
-    "S     W W W W W W WWW",
-    "WWWWW W W W W W W W W",
-    "W     W W W   W W W W",
-    "W WWWWWWW WWWWW W W W",
-    "W       W       W   W",
-    "WWWWWWWWWWWWWWWWWWWWW",
-];
-
-const springMap = [
-    "WWWWWWWWWWWWWWWWWWWWW",
-    "W   W     W     W W F",
-    "W W W WWWWWWWWW W W W",
-    "W W W         W W   W",
-    "W WWWWWWW W WWW W W W",
-    "W         W     W W W",
-    "W WWW WWWWW WWWWW W W",
-    "W W   W   W W     W W",
-    "W WWWWW W W W WWW W W",
-    "W     W W W W W W WWW",
-    "WWWWW W W W W W W W W",
-    "W     W W W   W W W W",
-    "W WWWWWWW WWWWW W W W",
-    "S     WWW       W   W",
-    "WWWWWWWWWWWWWWWWWWWWW",
-];
-
-const summerMap = [
-    "WWWWWWWWWWWWWWWWWWWWW",
-    "S   W     W     W W W",
-    "W W W WWWWWWWWW W W W",
-    "W W W         W W   W",
-    "W WWWWWWW W WWW W W W",
-    "W         W     W W W",
-    "W WWW WWWWW WWWWW W W",
-    "W W   W   W W     W W",
-    "W WWWWW W W W WWW W W",
-    "W     W W W W W W WWW",
-    "WWWWW W W W W W W W W",
-    "W     W W W   W W W W",
-    "W WWWWWWW WWWWW W W W",
-    "W     WWW       W   F",
-    "WWWWWWWWWWWWWWWWWWWWW",
-];
-
-const autumnMap = [
-    "WWWWWWWWWWWWWWWWWWWWW",
-    "W   W     W     W W W",
-    "W W W WWW WWWWW W W W",
-    "W W W   W     W W   W",
-    "W WWWWWWW W WWW W W W",
-    "W         W     W W W",
-    "W WWW WWWWW WWWWW W W",
-    "W W   W   W W     W W",
-    "S WWWWW W W W WWW W F",
-    "W     W W W W W W WWW",
-    "WWWWW W W W W W W W W",
-    "W     W W W   W W W W",
-    "W WWWWWWW WWWWW W W W",
-    "W       W       W   W",
-    "WWWWWWWWWWWWWWWWWWWWW",
-];
-
 const homeBtn = document.getElementById('homeBtn');
 const hoverHomeBtn = document.getElementById('hoverHomeBtn');
 const soundBtn = document.getElementById('soundBtn');
@@ -104,18 +15,6 @@ const startBtn = document.getElementById('start');
 const homePage = document.getElementById('home');
 const gameSection = document.getElementById('game');
 const gameDiv = document.createElement('div');
-
-if (deviceType !== 'desktop') {
-    homePage.classList.add('hidden');
-    const warningPage = document.createElement('div');
-    const warningText = document.createElement('p');
-    warningText.innerText = 'Oh no! You can only play Llamaroom on desktop :c';
-    warningText.classList.add('warningText');
-
-    warningPage.appendChild(warningText);
-    warningPage.classList.add('warning');
-    body.appendChild(warningPage);
-}
 
 let selectedToon = '';
 let selectedScene = ''; 
@@ -421,6 +320,8 @@ const closeStart = () => {
     }, 2500);
 }
 
+let clickCount = 'pause';
+
 startBtn.addEventListener('click', () => {
     homePage.classList.add('hidden');
     gameSection.classList.remove('hidden');
@@ -430,6 +331,7 @@ startBtn.addEventListener('click', () => {
     document.addEventListener('keydown', moveToon);
     closeStart();
 
+    clickCount = 'pause';
     gameSection.appendChild(audio);
     audio.play();
 });
@@ -449,6 +351,8 @@ const resetPage = () => {
     whiteToon.classList.remove('pinkText');
     blackToon.classList.remove('pinkText');
     soundBtn.classList.add('hidden');
+    clickCount = 'pause';
+    soundBtn.children[0].classList.replace('fa-play-circle', 'fa-pause-circle')
     gameSection.removeChild(audio);
     document.removeEventListener('keydown', moveToon);
 }
@@ -472,15 +376,13 @@ const goToHomePg = () => {
 
 homeBtn.addEventListener('click', goToHomePg);
 
-let clickCount = 'pause';
-
 soundBtn.addEventListener('click', () => {
  
     if (clickCount === 'pause') {
         audio.pause();
         soundBtn.children[0].classList.replace('fa-pause-circle', 'fa-play-circle')
         clickCount = 'play';
-    } else if (clickCount === 'play') {
+    } else {
         audio.play();
         soundBtn.children[0].classList.replace('fa-play-circle', 'fa-pause-circle')
         clickCount = 'pause';
