@@ -448,8 +448,6 @@ const resetPage = () => {
     resetSceneBg();
     whiteToon.classList.remove('pinkText');
     blackToon.classList.remove('pinkText');
-    homeBtn.classList.add('hidden');
-    hoverHomeBtn.classList.remove('hidden');
     soundBtn.classList.add('hidden');
     gameSection.removeChild(audio);
     document.removeEventListener('keydown', moveToon);
@@ -458,12 +456,15 @@ const resetPage = () => {
 const goToHomePg = () => {
     setTimeout(() => {
         gameSection.classList.add('hidden');
-        hoverHomeBtn.classList.add('hidden');
         gameSection.classList.remove('pageTransition');
         homePage.classList.add('homeTransition');
         homePage.classList.remove('hidden');
+        homeBtn.classList.add('hidden');
+        homeBtn.classList.remove('pageTransition')
+        homeBtn.children[0].classList.replace('fa-door-open', 'fa-door-closed')
     }, 800);
-
+    homeBtn.classList.add('pageTransition')
+    homeBtn.children[0].classList.replace('fa-door-closed', 'fa-door-open')
     gameSection.classList.add('pageTransition');
     
     resetPage();
@@ -477,9 +478,11 @@ soundBtn.addEventListener('click', () => {
  
     if (clickCount === 'pause') {
         audio.pause();
+        soundBtn.children[0].classList.replace('fa-pause-circle', 'fa-play-circle')
         clickCount = 'play';
     } else if (clickCount === 'play') {
         audio.play();
+        soundBtn.children[0].classList.replace('fa-play-circle', 'fa-pause-circle')
         clickCount = 'pause';
     }
 });
