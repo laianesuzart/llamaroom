@@ -16,6 +16,10 @@ const homePage = document.getElementById('home');
 const gameSection = document.getElementById('game');
 const controlsDiv = document.getElementById('controls');
 const gameDiv = document.createElement('div');
+const moveUpBtn = document.getElementById('moveUp');
+const moveDownBtn = document.getElementById('moveDown');
+const moveLeftBtn = document.getElementById('moveLeft');
+const moveRightBtn = document.getElementById('moveRight');
 
 let selectedToon = '';
 let selectedScene = ''; 
@@ -340,6 +344,19 @@ startBtn.addEventListener('click', () => {
     soundBtn.classList.remove('hidden');
     document.addEventListener('keydown', moveToon);
     closeStart();
+
+    moveUpBtn.addEventListener('click', () => {
+        moveToon({'key': 'ArrowUp'});
+    })
+    moveDownBtn.addEventListener('click', () => {
+        moveToon({'key': 'ArrowDown'});
+    })
+    moveLeftBtn.addEventListener('click', () => {
+        moveToon({'key': 'ArrowLeft'});
+    })
+    moveRightBtn.addEventListener('click', () => {
+        moveToon({'key': 'ArrowRight'});
+    })
 
     clickCount = 'pause';
     gameSection.appendChild(audio);
